@@ -1,0 +1,4 @@
+.Hero__revers-clock{
+    background: linear-gradient(90deg, rgba(217, 217, 217, 0.10) 13.57%, rgba(255, 255, 255, 0.01) 50.28%, rgba(212, 212, 212, 0.10) 86.6%);
+    backdrop-filter: blur(55px);
+}
