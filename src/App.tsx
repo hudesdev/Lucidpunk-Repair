@@ -4,6 +4,7 @@ import Header from './Component/Header';
 import Footer from './Component/Footer';
 import InitPage from './Pages/InitPage';
 import Goto from './Component/Goto';
+import Profile from './Pages/Profile';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Goto/>
       <Routes>
         <Route path='/' element = {<InitPage/>} />
+        <Route path='/profile' element = {<Profile/>} />
       </Routes>
       <Footer/>
     </BrowserRouter>

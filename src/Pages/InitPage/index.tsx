@@ -1,6 +1,7 @@
 import react from 'react'
 import { FaClock, FaCheckSquare, FaInfoCircle } from 'react-icons/fa'
 import HeroCard from '../../Component/HeroCard'
+import './index.css'
 
 const InitPage = ()=> {
 
@@ -37,6 +38,32 @@ const InitPage = ()=> {
         },
     ])
 
+    const [nfts, setNfts] = react.useState([
+        {
+            url: 'hero1.png',
+            price: 11.5
+        },
+        {
+            url: 'hero1.png',
+            price: 1.4
+        },
+        {
+            url: 'hero1.png',
+            price: 4.6
+        },
+        {
+            url: 'hero1.png',
+            price: 11.5
+        },
+        {
+            url: 'hero1.png',
+            price: 23
+        },
+        {
+            url: 'hero1.png',
+            price: 11.5
+        }
+    ]);
     return (
         <div>
             <div className='w-full flex justify-center'>
@@ -50,7 +77,9 @@ const InitPage = ()=> {
                         <div className=''>
                             <div className='text-[14px] text-white font-bold leading-[20px] mb-[8px] font-sans'>Floor</div>
                             <div className='flex mb-[8px]'>
-                                <img src="assets/img/Shape.png" alt="" className='h-[24px]' />
+                                <div className='h-[24px] w-[24px] rounded-full bg-[#676A71]/[.3] flex justify-center items-center mr-3'>
+                                    <img src="assets/img/Sol.png" alt="" className='w-[20px] h-[20px]' />
+                                </div>
                                 <div className='text-[#a1a087] text-[18px] font-bold leading-[24px] ml-[8px] font-sans'>11.24SOL</div>
                             </div>
                             <div className='text-[14px] text-white font-bold leading-[20px] mb-[8px] font-sans'>Tickets sales ends in:</div>
@@ -62,7 +91,9 @@ const InitPage = ()=> {
                         <div className=''>
                             <div className='text-[14px] text-white font-bold leading-[20px] mb-[8px] font-sans'>Top Offer</div>
                             <div className='flex mb-[8px]'>
-                                <img src="assets/img/Shape.png" alt="" className='h-[24px]' />
+                                <div className='h-[24px] w-[24px] rounded-full bg-[#676A71]/[.3] flex justify-center items-center mr-3'>
+                                    <img src="assets/img/Sol.png" alt="" className='w-[20px] h-[20px]' />
+                                </div>
                                 <div className='text-[#E5E1A8] text-[18px] font-bold leading-[24px] ml-[8px] font-sans'>13.95 SOL</div>
                             </div>
                             <div className='text-[14px] text-white font-bold leading-[20px] mb-[8px] font-sans'>Tickets sales starts in:</div>
@@ -75,15 +106,13 @@ const InitPage = ()=> {
             <div className='w-full flex justify-center'>
                 <div className='mt-[32px] flex flex-col xl:flex-row justify-between w-full xl:w-5/6'>
                     
-                    <div className='w-full gap-2 xl:w-3/4 flex md:grid md:grid-cols-3 md:gap-4 overflow-hidden m-[20px] xl:m-[0]'>
-                        <HeroCard/>
-                        <HeroCard/>
-                        <HeroCard/>
-                        <HeroCard/>
-                        <HeroCard/>
-                        <HeroCard/>
-                        <HeroCard/>
-                        <HeroCard/>
+                    <div className='w-full gap-2 xl:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-4 overflow-hidden md:m-[20px] xl:m-[0]'>
+                        {
+                            nfts.map((val, index) => {
+                                return <HeroCard url = {val.url} price = {val.price} key = {val + index.toString()} />
+                            })
+                        }
+                        
                     </div>
                     <div className='w-full xl:w-1/4'>
                         <div className='flex py-[24px] px-[4px] flex-col items-center gap-[24px] self-stretch border-y-[1px] xl:rounded-[32px] xl:border-[1px] border-[#292C31] bg-[#484848]/[.08]'>
@@ -97,13 +126,13 @@ const InitPage = ()=> {
                                 <div className='flex w-[140px] justify-center items-center px-[24px] py-[12px] bg-[#E42B2B] rounded-full text-white'>Activity</div>
                                 <div className='flex w-[140px] justify-center items-center px-[24px] py-[12px] border-[1px] border-[#292C31] rounded-full text-white'>Part. (23)</div>
                             </div>
-                            <div className='flex flex-col justify-between w-full text-white gap-1 [&>*:nth-child(even)]:bg-graySec [&>*:nth-child(odd)]:bg-gray-700 [&>*:first-child]:rounded-t-lg'>
+                            <div className='flex flex-col justify-between w-full text-white gap-1 [&>*:nth-child(even)]:bg-graySec [&>*:nth-child(odd)]:bg-zinc-800 [&>*:first-child]:rounded-t-lg'>
                                 {
                                     history.map((val, index) => {
                                         return <div className='px-[24px] py-[16px] flex items-center justify-between gap-[10px] self-stretch w-full'>
                                             <div>
                                                 <p className='text-[14px] font-semibold capitalize'>{val._id}</p>
-                                                <p className='text-[12px] font-semibold text-red'> {val.entry}</p>
+                                                <p className='text-[12px] font-semibold text-red'> {val.entry} Entry</p>
                                             </div>
                                             <p className='flex font-["Lato"] text-[14px] text-yellow gap-[8px] font-medium capitalize '>{
                                                 val.moment == 1 ? "Just now": val.moment < 60 ? val.moment + ' ' + 'Second Ago' : val.moment / 60 + ' Minute Ago'
@@ -117,7 +146,7 @@ const InitPage = ()=> {
                 </div>
             </div>
             {/* ///////////////////////////////////////////////////////////////////////// */}
-            <div className='w-full flex justify-center mt-[32px]'>
+            <div className='w-full flex justify-center mt-[32px] mb-[50px]'>
                 <div className='w-5/6 flex flex-col gap-4'>
                     <p className='text-yellow text-semiTitle font-semibold leading-[24px] flex gap-4'><FaInfoCircle/> Instructions on how to play</p>
                     <p className='text-white'>When it comes to Raffle Tickets, there are a couple of strategies. Which strategy you choose depends on your risk tolerance. Some people who prefer to take guaranteed returns on their tickets will elect to sell them in the Lucidpunks. Those who enjoy taking a chance will enter their tickets into the NFT raffles. There is definitely some easy GHST to be made by selling tickets in the Lucidpunks. Although, the idea of winning a raffle for a Godlike item can be tantalizing. It all comes down to your personal preference! Regardless of how you choose to make use of your Raffle Tickets we wish you the best of luck!</p>
