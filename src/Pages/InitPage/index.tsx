@@ -2,8 +2,11 @@ import react from 'react'
 import { FaClock, FaCheckSquare, FaInfoCircle } from 'react-icons/fa'
 import HeroCard from '../../Component/HeroCard'
 import './index.css'
+import { useAccount, useConnect, useEnsName } from 'wagmi'
 
 const InitPage = ()=> {
+
+    const { connect, connectors } = useConnect()
 
     const [history, setHistory] = react.useState([
         {
@@ -117,8 +120,8 @@ const InitPage = ()=> {
                     <div className='w-full xl:w-1/4'>
                         <div className='flex py-[24px] px-[4px] flex-col items-center gap-[24px] self-stretch border-y-[1px] xl:rounded-[32px] xl:border-[1px] border-[#292C31] bg-[#484848]/[.08]'>
                             <p className='text-white text-center text-[32px] font-bold leading-[48px]'>Start to raffle</p>
-                            <p className='w-full text-[#676A71] text-center text-[18px] leading-[24px] font-normal '>You can enter the raffle by connecting you solana wallet</p>
-                            <div className='flex w-2/3 justify-center items-center px-[32px] py-[16px] bg-[#E42B2B] rounded-full border-yellow-300 border-solid border-x-[0.5px] border-t-[1px] border-b-[3px]  text-white'>Connect Wallet</div>
+                            <p className='w-full text-[#676A71] text-center text-[18px] leading-[24px] font-normal  '>You can enter the raffle by connecting you solana wallet</p>
+                            <button onClick={() => connect({connector: connectors[0]})} className='flex w-2/3 justify-center items-center px-[32px] py-[16px] bg-[#E42B2B] rounded-full border-yellow-300 border-solid border-x-[0.5px] border-t-[1px] border-b-[3px]  text-white'>Connect Wallet</button>
                         </div>
 
                         <div className='flex p-[24px] flex-col items-center gap-[24px] self-stretch sm:rounded-[32px] border-y-[1px] sm:border-[1px] border-[#292C31] bg-[#484848]/[.08] mt-[24px]'>

@@ -1,8 +1,11 @@
 import react from 'react'
 import { NavLink } from 'react-router-dom'
 import {FaPlus, FaTwitter, FaTelegram, FaDiscord } from "react-icons/fa"
+import { useConnect } from 'wagmi'
 
 const Header = ()=> {
+
+    const { connect, connectors, error, isLoading, pendingConnector } =  useConnect()
     return (
         <div className='w-full md:px-20 flex justify-center sm:pt-8'>
             <div className='w-full bg-[#292C31] h-[66px] sm:h-[86px] sm:border-2 sm:border-solid sm:border-zinc-50/[.32] sm:rounded-full flex justify-between content-center px-5 py-3.5 sm:p-5'>
@@ -20,7 +23,7 @@ const Header = ()=> {
                     <FaTwitter className='mt-3'/>
                     <FaTelegram className='mt-3'/>
                     <FaDiscord className='mt-3'/>
-                    <div className='flex justfy-center items-center px-[16px] sm:px-[32px] py-[16px] bg-[#E42B2B] rounded-full border-yellow-300 border-solid border-x-[0.5px] border-t-[1px] border-b-[3px] text-white'><span className='hidden sm:block'>Connect Wallet</span><FaPlus className='block sm:hidden' /></div>
+                    <button onClick={() => connect({connector: connectors[0]})} className='flex justfy-center items-center px-[16px] sm:px-[32px] py-[16px] bg-[#E42B2B] rounded-full border-yellow-300 border-solid border-x-[0.5px] border-t-[1px] border-b-[3px] text-white'><span className='hidden sm:block'>Connect Wallet</span><FaPlus className='block sm:hidden' /></button>
                 </div>
                 {/* <div className='text-white w-1/2 flex h-[32px] justify-end'>
                     <div className='flex py-1 pr-2 pl-1 justify-center content-center rounded-l-3xl bg-[#131619]'>
